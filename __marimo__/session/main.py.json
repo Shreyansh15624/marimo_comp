@@ -1,0 +1,113 @@
+{
+  "version": "1",
+  "metadata": {
+    "marimo_version": "0.23.1",
+    "script_metadata_hash": null
+  },
+  "cells": [
+    {
+      "id": "Hbol",
+      "code_hash": "dfa435877f3ce55cbc01ccf303af74de",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "MJUe",
+      "code_hash": "d6daddb62088b82ad863d643d437c88d",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "vblA",
+      "code_hash": "3623088a710ae4f5a8a2c005c8c699c7",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "bkHC",
+      "code_hash": "16e6d339a11b65d6a587c0485a60342c",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "lEQa",
+      "code_hash": "afb777c25b87b5fc0317d4391393088d",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "PKri",
+      "code_hash": "260d7a3a3de96c0a4ffedd4a4fc50211",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<div style='display: flex;flex: 1;flex-direction: column;justify-content: flex-start;align-items: normal;flex-wrap: nowrap;gap: 0.5rem'><marimo-ui-element object-id='lEQa-0' random-id='dc6997fb-daa1-19fd-1c92-e9baf9359c01'><marimo-plotly data-initial-value='{}' data-label='null' data-figure='{&quot;data&quot;:[{&quot;hoverinfo&quot;:&quot;text+x&quot;,&quot;marker&quot;:{&quot;color&quot;:[&quot;#00FFFF&quot;,&quot;#555555&quot;,&quot;#555555&quot;,&quot;#555555&quot;,&quot;#555555&quot;,&quot;#555555&quot;,&quot;#555555&quot;,&quot;#555555&quot;,&quot;#555555&quot;,&quot;#555555&quot;]},&quot;text&quot;:[&quot;High Correlation Detected!&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;],&quot;x&quot;:[&quot;Feature 7&quot;,&quot;Feature 20&quot;,&quot;Feature 0&quot;,&quot;Feature 22&quot;,&quot;Feature 5&quot;,&quot;Feature 3&quot;,&quot;Feature 16&quot;,&quot;Feature 6&quot;,&quot;Feature 8&quot;,&quot;Feature 18&quot;],&quot;y&quot;:[1.0,0.8390285029693302,0.7488809609540281,0.7049087784610493,0.5813775144146777,0.5518754854901011,0.5094915287629442,0.4593022485847293,0.4354722395940921,0.3795755300699561],&quot;type&quot;:&quot;bar&quot;}],&quot;layout&quot;:{&quot;template&quot;:{&quot;data&quot;:{&quot;histogram2dcontour&quot;:[{&quot;type&quot;:&quot;histogram2dcontour&quot;,&quot;colorbar&quot;:{&quot;outlinewidth&quot;:0,&quot;ticks&quot;:&quot;&quot;},&quot;colorscale&quot;:[[0.0,&quot;#0d0887&quot;],[0.1111111111111111,&quot;#46039f&quot;],[0.2222222222222222,&quot;#7201a8&quot;],[0.3333333333333333,&quot;#9c179e&quot;],[0.4444444444444444,&quot;#bd3786&quot;],[0.5555555555555556,&quot;#d8576b&quot;],[0.6666666666666666,&quot;#ed7953&quot;],[0.7777777777777778,&quot;#fb9f3a&quot;],[0.8888888888888888,&quot;#fdca26&quot;],[1.0,&quot;#f0f921&quot;]]}],&quot;choropleth&quot;:[{&quot;type&quot;:&quot;choropleth&quot;,&quot;colorbar&quot;:{&quot;outlinewidth&quot;:0,&quot;ticks&quot;:&quot;&quot;}}],&quot;histogram2d&quot;:[{&quot;type&quot;:&quot;histogram2d&quot;,&quot;colorbar&quot;:{&quot;outlinewidth&quot;:0,&quot;ticks&quot;:&quot;&quot;},&quot;colorscale&quot;:[[0.0,&quot;#0d0887&quot;],[0.1111111111111111,&quot;#46039f&quot;],[0.2222222222222222,&quot;#7201a8&quot;],[0.3333333333333333,&quot;#9c179e&quot;],[0.4444444444444444,&quot;#bd3786&quot;],[0.5555555555555556,&quot;#d8576b&quot;],[0.6666666666666666,&quot;#ed7953&quot;],[0.7777777777777778,&quot;#fb9f3a&quot;],[0.8888888888888888,&quot;#fdca26&quot;],[1.0,&quot;#f0f921&quot;]]}],&quot;heatmap&quot;:[{&quot;type&quot;:&quot;heatmap&quot;,&quot;colorbar&quot;:{&quot;outlinewidth&quot;:0,&quot;ticks&quot;:&quot;&quot;},&quot;colorscale&quot;:[[0.0,&quot;#0d0887&quot;],[0.1111111111111111,&quot;#46039f&quot;],[0.2222222222222222,&quot;#7201a8&quot;],[0.3333333333333333,&quot;#9c179e&quot;],[0.4444444444444444,&quot;#bd3786&quot;],[0.5555555555555556,&quot;#d8576b&quot;],[0.6666666666666666,&quot;#ed7953&quot;],[0.7777777777777778,&quot;#fb9f3a&quot;],[0.8888888888888888,&quot;#fdca26&quot;],[1.0,&quot;#f0f921&quot;]]}],&quot;contourcarpet&quot;:[{&quot;type&quot;:&quot;contourcarpet&quot;,&quot;colorbar&quot;:{&quot;outlinewidth&quot;:0,&quot;ticks&quot;:&quot;&quot;}}],&quot;contour&quot;:[{&quot;type&quot;:&quot;contour&quot;,&quot;colorbar&quot;:{&quot;outlinewidth&quot;:0,&quot;ticks&quot;:&quot;&quot;},&quot;colorscale&quot;:[[0.0,&quot;#0d0887&quot;],[0.1111111111111111,&quot;#46039f&quot;],[0.2222222222222222,&quot;#7201a8&quot;],[0.3333333333333333,&quot;#9c179e&quot;],[0.4444444444444444,&quot;#bd3786&quot;],[0.5555555555555556,&quot;#d8576b&quot;],[0.6666666666666666,&quot;#ed7953&quot;],[0.7777777777777778,&quot;#fb9f3a&quot;],[0.8888888888888888,&quot;#fdca26&quot;],[1.0,&quot;#f0f921&quot;]]}],&quot;surface&quot;:[{&quot;type&quot;:&quot;surface&quot;,&quot;colorbar&quot;:{&quot;outlinewidth&quot;:0,&quot;ticks&quot;:&quot;&quot;},&quot;colorscale&quot;:[[0.0,&quot;#0d0887&quot;],[0.1111111111111111,&quot;#46039f&quot;],[0.2222222222222222,&quot;#7201a8&quot;],[0.3333333333333333,&quot;#9c179e&quot;],[0.4444444444444444,&quot;#bd3786&quot;],[0.5555555555555556,&quot;#d8576b&quot;],[0.6666666666666666,&quot;#ed7953&quot;],[0.7777777777777778,&quot;#fb9f3a&quot;],[0.8888888888888888,&quot;#fdca26&quot;],[1.0,&quot;#f0f921&quot;]]}],&quot;mesh3d&quot;:[{&quot;type&quot;:&quot;mesh3d&quot;,&quot;colorbar&quot;:{&quot;outlinewidth&quot;:0,&quot;ticks&quot;:&quot;&quot;}}],&quot;scatter&quot;:[{&quot;marker&quot;:{&quot;line&quot;:{&quot;color&quot;:&quot;#283442&quot;}},&quot;type&quot;:&quot;scatter&quot;}],&quot;parcoords&quot;:[{&quot;type&quot;:&quot;parcoords&quot;,&quot;line&quot;:{&quot;colorbar&quot;:{&quot;outlinewidth&quot;:0,&quot;ticks&quot;:&quot;&quot;}}}],&quot;scatterpolargl&quot;:[{&quot;type&quot;:&quot;scatterpolargl&quot;,&quot;marker&quot;:{&quot;colorbar&quot;:{&quot;outlinewidth&quot;:0,&quot;ticks&quot;:&quot;&quot;}}}],&quot;bar&quot;:[{&quot;error_x&quot;:{&quot;color&quot;:&quot;#f2f5fa&quot;},&quot;error_y&quot;:{&quot;color&quot;:&quot;#f2f5fa&quot;},&quot;marker&quot;:{&quot;line&quot;:{&quot;color&quot;:&quot;rgb(17,17,17)&quot;,&quot;width&quot;:0.5},&quot;pattern&quot;:{&quot;fillmode&quot;:&quot;overlay&quot;,&quot;size&quot;:10,&quot;solidity&quot;:0.2}},&quot;type&quot;:&quot;bar&quot;}],&quot;scattergeo&quot;:[{&quot;type&quot;:&quot;scattergeo&quot;,&quot;marker&quot;:{&quot;colorbar&quot;:{&quot;outlinewidth&quot;:0,&quot;ticks&quot;:&quot;&quot;}}}],&quot;scatterpolar&quot;:[{&quot;type&quot;:&quot;scatterpolar&quot;,&quot;marker&quot;:{&quot;colorbar&quot;:{&quot;outlinewidth&quot;:0,&quot;ticks&quot;:&quot;&quot;}}}],&quot;histogram&quot;:[{&quot;marker&quot;:{&quot;pattern&quot;:{&quot;fillmode&quot;:&quot;overlay&quot;,&quot;size&quot;:10,&quot;solidity&quot;:0.2}},&quot;type&quot;:&quot;histogram&quot;}],&quot;scattergl&quot;:[{&quot;marker&quot;:{&quot;line&quot;:{&quot;color&quot;:&quot;#283442&quot;}},&quot;type&quot;:&quot;scattergl&quot;}],&quot;scatter3d&quot;:[{&quot;type&quot;:&quot;scatter3d&quot;,&quot;line&quot;:{&quot;colorbar&quot;:{&quot;outlinewidth&quot;:0,&quot;ticks&quot;:&quot;&quot;}},&quot;marker&quot;:{&quot;colorbar&quot;:{&quot;outlinewidth&quot;:0,&quot;ticks&quot;:&quot;&quot;}}}],&quot;scattermap&quot;:[{&quot;type&quot;:&quot;scattermap&quot;,&quot;marker&quot;:{&quot;colorbar&quot;:{&quot;outlinewidth&quot;:0,&quot;ticks&quot;:&quot;&quot;}}}],&quot;scattermapbox&quot;:[{&quot;type&quot;:&quot;scattermapbox&quot;,&quot;marker&quot;:{&quot;colorbar&quot;:{&quot;outlinewidth&quot;:0,&quot;ticks&quot;:&quot;&quot;}}}],&quot;scatterternary&quot;:[{&quot;type&quot;:&quot;scatterternary&quot;,&quot;marker&quot;:{&quot;colorbar&quot;:{&quot;outlinewidth&quot;:0,&quot;ticks&quot;:&quot;&quot;}}}],&quot;scattercarpet&quot;:[{&quot;type&quot;:&quot;scattercarpet&quot;,&quot;marker&quot;:{&quot;colorbar&quot;:{&quot;outlinewidth&quot;:0,&quot;ticks&quot;:&quot;&quot;}}}],&quot;carpet&quot;:[{&quot;aaxis&quot;:{&quot;endlinecolor&quot;:&quot;#A2B1C6&quot;,&quot;gridcolor&quot;:&quot;#506784&quot;,&quot;linecolor&quot;:&quot;#506784&quot;,&quot;minorgridcolor&quot;:&quot;#506784&quot;,&quot;startlinecolor&quot;:&quot;#A2B1C6&quot;},&quot;baxis&quot;:{&quot;endlinecolor&quot;:&quot;#A2B1C6&quot;,&quot;gridcolor&quot;:&quot;#506784&quot;,&quot;linecolor&quot;:&quot;#506784&quot;,&quot;minorgridcolor&quot;:&quot;#506784&quot;,&quot;startlinecolor&quot;:&quot;#A2B1C6&quot;},&quot;type&quot;:&quot;carpet&quot;}],&quot;table&quot;:[{&quot;cells&quot;:{&quot;fill&quot;:{&quot;color&quot;:&quot;#506784&quot;},&quot;line&quot;:{&quot;color&quot;:&quot;rgb(17,17,17)&quot;}},&quot;header&quot;:{&quot;fill&quot;:{&quot;color&quot;:&quot;#2a3f5f&quot;},&quot;line&quot;:{&quot;color&quot;:&quot;rgb(17,17,17)&quot;}},&quot;type&quot;:&quot;table&quot;}],&quot;barpolar&quot;:[{&quot;marker&quot;:{&quot;line&quot;:{&quot;color&quot;:&quot;rgb(17,17,17)&quot;,&quot;width&quot;:0.5},&quot;pattern&quot;:{&quot;fillmode&quot;:&quot;overlay&quot;,&quot;size&quot;:10,&quot;solidity&quot;:0.2}},&quot;type&quot;:&quot;barpolar&quot;}],&quot;pie&quot;:[{&quot;automargin&quot;:true,&quot;type&quot;:&quot;pie&quot;}]},&quot;layout&quot;:{&quot;autotypenumbers&quot;:&quot;strict&quot;,&quot;colorway&quot;:[&quot;#636efa&quot;,&quot;#EF553B&quot;,&quot;#00cc96&quot;,&quot;#ab63fa&quot;,&quot;#FFA15A&quot;,&quot;#19d3f3&quot;,&quot;#FF6692&quot;,&quot;#B6E880&quot;,&quot;#FF97FF&quot;,&quot;#FECB52&quot;],&quot;font&quot;:{&quot;color&quot;:&quot;#f2f5fa&quot;},&quot;hovermode&quot;:&quot;closest&quot;,&quot;hoverlabel&quot;:{&quot;align&quot;:&quot;left&quot;},&quot;paper_bgcolor&quot;:&quot;rgb(17,17,17)&quot;,&quot;plot_bgcolor&quot;:&quot;rgb(17,17,17)&quot;,&quot;polar&quot;:{&quot;bgcolor&quot;:&quot;rgb(17,17,17)&quot;,&quot;angularaxis&quot;:{&quot;gridcolor&quot;:&quot;#506784&quot;,&quot;linecolor&quot;:&quot;#506784&quot;,&quot;ticks&quot;:&quot;&quot;},&quot;radialaxis&quot;:{&quot;gridcolor&quot;:&quot;#506784&quot;,&quot;linecolor&quot;:&quot;#506784&quot;,&quot;ticks&quot;:&quot;&quot;}},&quot;ternary&quot;:{&quot;bgcolor&quot;:&quot;rgb(17,17,17)&quot;,&quot;aaxis&quot;:{&quot;gridcolor&quot;:&quot;#506784&quot;,&quot;linecolor&quot;:&quot;#506784&quot;,&quot;ticks&quot;:&quot;&quot;},&quot;baxis&quot;:{&quot;gridcolor&quot;:&quot;#506784&quot;,&quot;linecolor&quot;:&quot;#506784&quot;,&quot;ticks&quot;:&quot;&quot;},&quot;caxis&quot;:{&quot;gridcolor&quot;:&quot;#506784&quot;,&quot;linecolor&quot;:&quot;#506784&quot;,&quot;ticks&quot;:&quot;&quot;}},&quot;coloraxis&quot;:{&quot;colorbar&quot;:{&quot;outlinewidth&quot;:0,&quot;ticks&quot;:&quot;&quot;}},&quot;colorscale&quot;:{&quot;sequential&quot;:[[0.0,&quot;#0d0887&quot;],[0.1111111111111111,&quot;#46039f&quot;],[0.2222222222222222,&quot;#7201a8&quot;],[0.3333333333333333,&quot;#9c179e&quot;],[0.4444444444444444,&quot;#bd3786&quot;],[0.5555555555555556,&quot;#d8576b&quot;],[0.6666666666666666,&quot;#ed7953&quot;],[0.7777777777777778,&quot;#fb9f3a&quot;],[0.8888888888888888,&quot;#fdca26&quot;],[1.0,&quot;#f0f921&quot;]],&quot;sequentialminus&quot;:[[0.0,&quot;#0d0887&quot;],[0.1111111111111111,&quot;#46039f&quot;],[0.2222222222222222,&quot;#7201a8&quot;],[0.3333333333333333,&quot;#9c179e&quot;],[0.4444444444444444,&quot;#bd3786&quot;],[0.5555555555555556,&quot;#d8576b&quot;],[0.6666666666666666,&quot;#ed7953&quot;],[0.7777777777777778,&quot;#fb9f3a&quot;],[0.8888888888888888,&quot;#fdca26&quot;],[1.0,&quot;#f0f921&quot;]],&quot;diverging&quot;:[[0,&quot;#8e0152&quot;],[0.1,&quot;#c51b7d&quot;],[0.2,&quot;#de77ae&quot;],[0.3,&quot;#f1b6da&quot;],[0.4,&quot;#fde0ef&quot;],[0.5,&quot;#f7f7f7&quot;],[0.6,&quot;#e6f5d0&quot;],[0.7,&quot;#b8e186&quot;],[0.8,&quot;#7fbc41&quot;],[0.9,&quot;#4d9221&quot;],[1,&quot;#276419&quot;]]},&quot;xaxis&quot;:{&quot;gridcolor&quot;:&quot;#283442&quot;,&quot;linecolor&quot;:&quot;#506784&quot;,&quot;ticks&quot;:&quot;&quot;,&quot;title&quot;:{&quot;standoff&quot;:15},&quot;zerolinecolor&quot;:&quot;#283442&quot;,&quot;automargin&quot;:true,&quot;zerolinewidth&quot;:2},&quot;yaxis&quot;:{&quot;gridcolor&quot;:&quot;#283442&quot;,&quot;linecolor&quot;:&quot;#506784&quot;,&quot;ticks&quot;:&quot;&quot;,&quot;title&quot;:{&quot;standoff&quot;:15},&quot;zerolinecolor&quot;:&quot;#283442&quot;,&quot;automargin&quot;:true,&quot;zerolinewidth&quot;:2},&quot;scene&quot;:{&quot;xaxis&quot;:{&quot;backgroundcolor&quot;:&quot;rgb(17,17,17)&quot;,&quot;gridcolor&quot;:&quot;#506784&quot;,&quot;linecolor&quot;:&quot;#506784&quot;,&quot;showbackground&quot;:true,&quot;ticks&quot;:&quot;&quot;,&quot;zerolinecolor&quot;:&quot;#C8D4E3&quot;,&quot;gridwidth&quot;:2},&quot;yaxis&quot;:{&quot;backgroundcolor&quot;:&quot;rgb(17,17,17)&quot;,&quot;gridcolor&quot;:&quot;#506784&quot;,&quot;linecolor&quot;:&quot;#506784&quot;,&quot;showbackground&quot;:true,&quot;ticks&quot;:&quot;&quot;,&quot;zerolinecolor&quot;:&quot;#C8D4E3&quot;,&quot;gridwidth&quot;:2},&quot;zaxis&quot;:{&quot;backgroundcolor&quot;:&quot;rgb(17,17,17)&quot;,&quot;gridcolor&quot;:&quot;#506784&quot;,&quot;linecolor&quot;:&quot;#506784&quot;,&quot;showbackground&quot;:true,&quot;ticks&quot;:&quot;&quot;,&quot;zerolinecolor&quot;:&quot;#C8D4E3&quot;,&quot;gridwidth&quot;:2}},&quot;shapedefaults&quot;:{&quot;line&quot;:{&quot;color&quot;:&quot;#f2f5fa&quot;}},&quot;annotationdefaults&quot;:{&quot;arrowcolor&quot;:&quot;#f2f5fa&quot;,&quot;arrowhead&quot;:0,&quot;arrowwidth&quot;:1},&quot;geo&quot;:{&quot;bgcolor&quot;:&quot;rgb(17,17,17)&quot;,&quot;landcolor&quot;:&quot;rgb(17,17,17)&quot;,&quot;subunitcolor&quot;:&quot;#506784&quot;,&quot;showland&quot;:true,&quot;showlakes&quot;:true,&quot;lakecolor&quot;:&quot;rgb(17,17,17)&quot;},&quot;title&quot;:{&quot;x&quot;:0.05},&quot;updatemenudefaults&quot;:{&quot;bgcolor&quot;:&quot;#506784&quot;,&quot;borderwidth&quot;:0},&quot;sliderdefaults&quot;:{&quot;bgcolor&quot;:&quot;#C8D4E3&quot;,&quot;borderwidth&quot;:1,&quot;bordercolor&quot;:&quot;rgb(17,17,17)&quot;,&quot;tickwidth&quot;:0},&quot;mapbox&quot;:{&quot;style&quot;:&quot;dark&quot;}}},&quot;paper_bgcolor&quot;:&quot;rgba(0,0,0,0)&quot;,&quot;plot_bgcolor&quot;:&quot;rgba(0,0,0,0)&quot;,&quot;title&quot;:{&quot;text&quot;:&quot;hallucinaion Bar Chart - Top 10 features&quot;},&quot;yaxis&quot;:{&quot;title&quot;:{&quot;text&quot;:&quot;Calculated Importance&quot;}}}}' data-config='{}'></marimo-plotly></marimo-ui-element><div style='padding:1rem;border:1px solid #00FFFF;border-radius:8px'><div style='display: flex;flex: 1;flex-direction: column;justify-content: flex-start;align-items: center;flex-wrap: nowrap;gap: 0.5rem'><div style='flex: 1;display: flex;min-width: 0;min-height: 0'><div style='display: flex;flex: 1;flex-direction: row;justify-content: space-between;align-items: center;flex-wrap: nowrap;gap: 0.5rem'><span class=\"markdown prose dark:prose-invert contents\"><h3 id=\"researchers-control-panel\">Researcher's Control Panel</h3></span></div></div><div style='flex: 1;display: flex;min-width: 0;min-height: 0'><div style='display: flex;flex: 1;flex-direction: row;justify-content: space-between;align-items: center;flex-wrap: nowrap;gap: 0.5rem'><marimo-ui-element object-id='vblA-0' random-id='50a296ec-f245-79d0-c837-340d60fba454'><marimo-slider data-initial-value='500' data-label='&quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert contents&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;Data Sample Size (N)&lt;/span&gt;&lt;/span&gt;&quot;' data-start='500' data-stop='1500' data-step='1' data-steps='[]' data-debounce='false' data-disabled='false' data-orientation='&quot;horizontal&quot;' data-show-value='false' data-include-input='false' data-full-width='false'></marimo-slider></marimo-ui-element><marimo-ui-element object-id='vblA-1' random-id='ed653194-086d-fd69-1b36-349c5f73913d'><marimo-slider data-initial-value='5' data-label='&quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert contents&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;Feature Count (Dimensions)&lt;/span&gt;&lt;/span&gt;&quot;' data-start='0' data-stop='100' data-step='5' data-steps='[]' data-debounce='false' data-disabled='false' data-orientation='&quot;horizontal&quot;' data-show-value='false' data-include-input='false' data-full-width='false'></marimo-slider></marimo-ui-element></div></div><div style='flex: 1;display: flex;min-width: 0;min-height: 0'><div style='display: flex;flex: 1;flex-direction: row;justify-content: space-between;align-items: center;flex-wrap: nowrap;gap: 0.5rem'><marimo-ui-element object-id='vblA-2' random-id='3b86f974-9474-bbff-9d9b-b1d854c9c99b'><marimo-dropdown data-initial-value='[&quot;Feature Importance (Random Forest)&quot;]' data-label='&quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert contents&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;Interpretability Method&lt;/span&gt;&lt;/span&gt;&quot;' data-options='[&quot;Feature Importance (Random Forest)&quot;,&quot;Saliency Mapping (Dummy Tensor)&quot;]' data-allow-select-none='false' data-searchable='false' data-full-width='false'></marimo-dropdown></marimo-ui-element><marimo-ui-element object-id='vblA-3' random-id='e6f26955-dcd9-afd4-a8e0-22f4e53991df'><marimo-number data-initial-value='0.01' data-label='&quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert contents&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;Significance Threshold (p-value)&lt;/span&gt;&lt;/span&gt;&quot;' data-start='0.001' data-stop='0.5' data-step='0.001' data-debounce='false' data-full-width='false' data-disabled='false'></marimo-number></marimo-ui-element></div></div></div></div></div>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Xref",
+      "code_hash": "e1e0826ead39546d0ef2f25c43d7530c",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "SFPL",
+      "code_hash": "4f92128ce87e0c5de2990dd7c4c4d914",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><div style='color:#00FF00;background-color:#1a331a;padding:1rem;border-radius:8px'><span class=\"markdown prose dark:prose-invert contents\"><h3 id=\"trap-sprung-statistical-illusion-achieved-you-forced-a-false-positive-out-of-pure-noise-lowest-p-value-00065\">\u2705 <strong>TRAP SPRUNG: Statistical Illusion Achieved!</strong> You forced a false positive out of pure noise. (Lowest p-value: 0.0065)</h3></span></div>\n\n<hr />\n<h3 id=\"post-mortem\">Post-Mortem</h3>\n<span class=\"paragraph\">The <code>scikit-learn</code> model <code>RandomForestClassifier()</code></span>\n<span class=\"paragraph\">The core message: Interpretability tools applied to untrained networks can still produce highly convincing, human-readable explanations.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    }
+  ]
+}
