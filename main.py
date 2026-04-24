@@ -1,7 +1,11 @@
 import marimo
 
 __generated_with = "0.23.1"
-app = marimo.App(width="full")
+app = marimo.App(
+    width="full",
+    app_title="AI Interpretability: The Dead Salmon",
+    auto_download=["html", "ipynb"],
+)
 
 
 @app.cell
@@ -18,14 +22,6 @@ def imports():
 @app.cell
 def header(mo):
     mo.md("""
- 
-    """)
-    return
-
-
-@app.cell
-def _(mo):
-    mo.md("""
     # **The Dead Salmons of AI Interpretability**
 
     In 2009, researcher Craig Bennett placed a dead Atlantic salmon in an fMRI machine and showed it pictures of humans in social situations. When analyzing the data *without correcting for multiple comparisons*, the fMRI detected "brain activity" in the dead fish.
@@ -39,8 +35,8 @@ def _(mo):
 
 @app.cell
 def controls(mo):
-    sample_size = mo.ui.slider(start=500, stop=1500, step=1, value=500, label="Data Sample Size (N)")
-    feature_count = mo.ui.slider(start=0, stop=100, step=5, value=5, label="Feature Count (Dimensions)")
+    sample_size = mo.ui.slider(start=100, stop=5000, step=1, value=100, label="Data Sample Size (N)")
+    feature_count = mo.ui.slider(start=100, stop=5000, step=1, value=100, label="Feature Count (Dimensions)")
     method = mo.ui.dropdown(
         options=["Feature Importance (Random Forest)", "Saliency Mapping (Dummy Tensor)"],
         value= "Feature Importance (Random Forest)",
@@ -86,7 +82,7 @@ def engine(feature_count, np, p_thresh, sample_size, stats):
         p_values.append(p)
 
     # 3. Singling out the best of False Positives
-    best_idx = np.argmin(p_values if p_values else 0)
+    best_idx = np.argmin(p_values if p_values else [0])
     best_p_val = p_values[best_idx]
 
     # Identifying the top 10 features to making a good dashboard
@@ -99,44 +95,48 @@ def engine(feature_count, np, p_thresh, sample_size, stats):
 
     # Checking if the trap is sprung
     trap_sprung = best_p_val < alpha
-    return (
-        alpha,
-        best_p_val,
-        important_scores,
-        top_10_indices,
-        top_10_p_vals,
-        trap_sprung,
-    )
+    return alpha, best_p_val, m, p_values, trap_sprung
 
 
 @app.cell
-def visualization(
-    alpha,
-    go,
-    important_scores,
-    mo,
-    top_10_indices,
-    top_10_p_vals,
-):
-    # 4. The Core Logic
-    colors = ['#00FFFF' if p < alpha else "#555555" for p in top_10_p_vals]
+def visualization(alpha, go, m, mo, np, p_values):
+    # 1. Generating stable 3D coordinates for the 'brain/tensor' structure
+    # We use static seed so the cloud shape doesn't violently jump around when tweaking sliders
+    np.random.seed(42)
+    x_coords = np.random.randn(m)
+    y_coords = np.random.randn(m)
+    z_coords = np.random.randn(m)
 
-    fig = go.Figure(data=[
-        go.Bar(
-            x=[f"Feature {idx}" for idx in top_10_indices],
-            y=important_scores,
-            marker_color=colors,
-            text=["High Correlation Detected!" if p < alpha else "" for p in top_10_p_vals],
-            hoverinfo="text+x",
-        )
-    ])
+    # 2. Color & Size Logic
+    marker_sizes = [24 if p < alpha else 12 for p in p_values]
+    marker_colors = ['rgba(255, 105, 38, 1)' if p < alpha else 'rgba(166, 68, 68, 0.2)' for p in p_values]
+
+    # 3. Building the WebGL Scatter Plot
+    fig = go.Figure(data=[go.Scatter3d(
+        x=x_coords,
+        y=y_coords,
+        z=z_coords,
+        mode='markers',
+        marker=dict(
+            size=marker_sizes,
+            color=marker_colors,
+            line=dict(width=0),
+        ),
+        text=[f"Feature {i} | p-value: {p:.4f}" for i, p in enumerate(p_values)],
+        hoverinfo="text",
+    )])
 
     fig.update_layout(
         template="plotly_dark",
-        paper_bgcolor='rgba(0,0,0,0)',
-        plot_bgcolor='rgba(0,0,0,0)',
-        title="hallucinaion Bar Chart - Top 10 features",
-        yaxis_title="Calculated Importance",
+        paper_bgcolor='rgba(0, 0, 0, 0)',
+        margin=dict(l=0, r=0, b=0, t=30),
+        # title=dict(text="3D Feature Activation Cloud", font=dict(color="black")),
+        scene=dict(
+            xaxis=dict(showgrid=False, zeroline=False, showticklabels=False, title='', showbackground=False),
+            yaxis=dict(showgrid=False, zeroline=False, showticklabels=False, title='', showbackground=False),
+            zaxis=dict(showgrid=False, zeroline=False, showticklabels=False, title='', showbackground=False),
+            bgcolor='rgba(120, 120, 120, 10)'
+        )
     )
 
     chart = mo.ui.plotly(fig)
@@ -180,7 +180,6 @@ def post_mortem(RandomForestClassifier, mo, status):
         The core message: Interpretability tools applied to untrained networks can still produce highly convincing, human-readable explanations.
         """
     )
-
     return
 
 
