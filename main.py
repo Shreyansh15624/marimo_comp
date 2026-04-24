@@ -2,6 +2,7 @@ import marimo
 
 __generated_with = "0.23.1"
 app = marimo.App(
+    width="full",
     app_title="AI Interpretability: The Dead Salmon",
     auto_download=["html", "ipynb"],
 )
@@ -44,16 +45,12 @@ def controls(mo):
     p_thresh = mo.ui.number(start=0.001, stop=0.5, step=0.001, value=0.01, label="Significance Threshold (p-value)")
 
     title = mo.hstack(items=[mo.md("### Researcher's Control Panel")], align="center")
-    controls_1 = mo.hstack(
-        items = [sample_size, feature_count],
-        align="center"
-        )
-    controls_2 = mo.hstack(
-        items=[method, p_thresh],
-        align="center"
-        )
+    controls = mo.vstack(
+        items = [sample_size, feature_count, method, p_thresh],
+        align="stretch"
+    )
     control_panel = mo.vstack(
-        items=[title, controls_1, controls_2],
+        items=[title, controls],
         align="center",
         gap=0.5,
         heights=[1, 1, 1],
@@ -108,12 +105,14 @@ def visualization(alpha, go, m, method, mo, np, p_values):
         x_coords = np.random.randn(m)
         y_coords = np.random.randn(m)
         z_coords = np.random.randn(m)
+        sg, zl = False, False
     else:
         # Rigid uniform tensor cube (Uniform Distribution)
         # Scaled from -3 to 3 to roughly match the visual volume of the Gaussian Cloud
         x_coords = np.random.uniform(-3, 3, m)
         y_coords = np.random.uniform(-3, 3, m)
         z_coords = np.random.uniform(-3, 3, m)
+        sg, zl = True, True
 
     # 2. Color & Size Logic
     marker_sizes = [24 if p < alpha else 12 for p in p_values]
@@ -138,12 +137,11 @@ def visualization(alpha, go, m, method, mo, np, p_values):
         template="plotly_dark",
         paper_bgcolor='rgba(0, 0, 0, 0)',
         margin=dict(l=0, r=0, b=0, t=30),
-        # title=dict(text="3D Feature Activation Cloud", font=dict(color="black")),
         scene=dict(
-            xaxis=dict(showgrid=False, zeroline=False, showticklabels=False, title='', showbackground=False),
-            yaxis=dict(showgrid=False, zeroline=False, showticklabels=False, title='', showbackground=False),
-            zaxis=dict(showgrid=False, zeroline=False, showticklabels=False, title='', showbackground=False),
-            bgcolor='rgba(120, 120, 120, 10)'
+            xaxis=dict(showgrid=sg, zeroline=zl, showticklabels=False, title='', showbackground=False),
+            yaxis=dict(showgrid=sg, zeroline=zl, showticklabels=False, title='', showbackground=False),
+            zaxis=dict(showgrid=sg, zeroline=zl, showticklabels=False, title='', showbackground=False),
+            bgcolor='rgba(40, 40, 40, 0.3)'
         )
     )
 
@@ -152,44 +150,49 @@ def visualization(alpha, go, m, method, mo, np, p_values):
 
 
 @app.cell
-def layout(chart, control_panel, mo):
-    # Combining Controls & the Chart into two columns
-    dashboard = mo.vstack(
-        [chart, control_panel],
+def layout(chart, control_panel, mo, ui_card):
+    # Using strict CSS Grid to force Plotly to respect the column boundaries
+    dashboard = mo.md(
+        f"""
+        <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 2rem; align-items: stretch; max-width: 100%;">
+            <div style="display: flex; flex-direction: column; gap: 1.5rem; min-width: 0;">
+                {chart}
+                {control_panel}
+            </div>
+            <div style="min-width: 0; height: 100%;">
+                <div style="height: 100%;">
+                    {ui_card}
+                </div>
+            </div>
+        </div>
+        """
     )
     dashboard
     return
 
 
 @app.cell
-def status_indicator(best_p_val, mo, trap_sprung):
-    if trap_sprung:
-        status = mo.md(f"### ✅ **TRAP SPRUNG: Statistical Illusion Achieved!** You forced a false positive out of pure noise. (Lowest p-value: {best_p_val:.4f})")
-        status = status.style(color="#00FF00", background_color="#1a331a", padding="1rem", border_radius="8px")
-    else:
-        status = mo.md(f"### ❌ **STATUS: NO SIGNAL DETECTED.** The model is behaving like a dead fish. (Lowest p-value: {best_p_val:.4f})")
-        status = status.style(color="#FF4444", background_color="#331a1a", padding="1rem", border_radius="8px")
-    return
-
-
-@app.cell
-def post_mortem(mo, trap_sprung):
+def post_mortem(best_p_val, mo, trap_sprung):
     if not trap_sprung:
-        content = """
+        content = f"""
         ### 🔬 The Experiment is Ongoing!
         The neural matrix is currently stable, so adjust the features and significance thresholds in the control panel to see if you can force the interpretability tools to hallucinate a false positive.
+
+        **Current Lowest p-value:** `{best_p_val:.4f}`
         """
         border_color = "#00FFFF" # Calm Cyan, isn't too harsh on the eyes
     else:
-        content="""
-        ### 🧠 Post-Mortem: The alphaXiv Connection
-        **You just replicated the Dead Salmon Effect in AI.**
+        content=f"""
+        ### 🚨 TRAP SPRUNG: The alphaXiv Connection
+        **Lowest p-value achieved: `{best_p_val:.4f}`**
 
-        Just like the 2009 fMRI experiment detected "social awareness" in a dead Atlantic salmon simply because they didn't correct for the noise generated by the massive number of voxels being tested, you just forced an interpretability tool to find a highly significant feature in pure, unadulterated noise.
+        You just successfully replicated the **Dead Salmon Effect** inside an AI model.
 
-        The core message of the alphaXiv research paper is critical: **Interpretability tools applied to untrained / highly noisy networks can still produce highly convincing, human-readable explanations.**
+        **The Illusion:** Just like the infamous 2009 fMRI experiment detected "social awareness" in a dead Atlantic salmon, you just forced a standard interpretability tool to find a highly significant, critical feature inside pure, unadulterated noise. 
 
-        When we scale our AI architectures to bilions of parameters, the multiple comparisons problem scales exponentially with it. If our mathematical sanity checks fail, our tools won't just fail quietly-they confidently will lie to us, painting profound meaning onto a completely dead matrix. 
+        **The Mechanics:** By increasing the feature dimensions, you exponentially drove up the Family-Wise Error Rate. The model didn't find intelligence; it just rolled the mathematical dice enough times to guarantee a statistical fluke, and then painted it bright orange.
+
+        **The Real-World Stakes:** This is the core thesis of the alphaXiv research paper. When we scale architectures to billions of parameters, this Multiple Comparisons Problem scales exponentially with it. If our mathematical sanity checks fail, our interpretability tools won't fail quietly—they will confidently lie to us, projecting profound, human-readable meaning onto a completely dead matrix.
         """
         border_color = "#FF6926" # Burnt orange to match the hallucinated node
 
@@ -201,8 +204,8 @@ def post_mortem(mo, trap_sprung):
         border_left=f"4px solid {border_color}",
         margin_top="2rem",
     )
-    ui_card
-    return
+
+    return (ui_card,)
 
 
 if __name__ == "__main__":
