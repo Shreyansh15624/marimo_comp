@@ -32,3 +32,5 @@ Because this application is compiled to WebAssembly, it does not require a Pytho
    ```bash
    python -m http.server 8000
    ```
+
+Also check the project out here live at, [![Open in molab](https://molab.marimo.io/molab-shield.svg)](https://molab.marimo.io/notebooks/nb_hBRHVtqRtY6GHaz7yDz6Wi)
