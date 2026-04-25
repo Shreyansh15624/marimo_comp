@@ -1,0 +1,24 @@
+# 1. Python & Environment
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+.env
+
+# 2. Editor & OS Configuration
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# 3. Marimo Internal State
+__marimo__/
+layouts/
+
+# 4. WASM Export Artifacts (The Build Dump)
+assets/
+dead_salmon.html
+*.png
+*.ico
+manifest.json
+site.webmanifest
