@@ -1,3 +1,17 @@
+# /// script
+# requires-python = ">=3.11"
+# dependencies = [
+#     "marimo",
+#     "numpy",
+#     "plotly",
+#     "scipy",
+# ]
+# ///
+
+import marimo
+
+__generated_with = "0.23.1"
+
 import marimo
 
 __generated_with = "0.23.1"
@@ -14,7 +28,6 @@ def imports():
     import numpy as np
     import scipy.stats as stats
     import plotly.graph_objects as go
-    from sklearn.ensemble import RandomForestClassifier
 
     return go, mo, np, stats
 
@@ -64,14 +77,14 @@ def interactive_theory(mo):
         {
             "🐟 Phase 1: The Dead Salmon Illusion": mo.md(
                 """
-                In 2009, researcher Craig Bennett placed a dead Atlantic salmon in an fMRI machine and showed it pictures of humans in social situations. When analyzing the data *without correcting for multiple comparisons*, the fMRI detected "brain activity" in the dead fish. 
+                In 2009, researcher Craig Bennett placed a dead Atlantic Salmon in an fMRI machine and showed it pictures of humans in social situations. When analyzing the data *without correcting for multiple comparisons*, the fMRI detected "brain activity", in a dead fish. 
 
                 The takeaway? If your math lacks sanity checks, it will confidently hallucinate intelligence out of pure noise.
                 """
             ),
             "🎲 Phase 2: The Math (Why It Breaks)": mo.md(
                 """
-                In AI interpretability, we look at thousands of features. When you test multiple features simultaneously against a random target, the probability of finding a false positive by pure random chance stacks exponentially. 
+                In AI interpretability, we look at thousands of features. A feature here is simply one single column correspondent to a set of values within a neural network. When you test multiple features simultaneously against a random target, the probability of finding a false positive by pure random chance stacks exponentially. 
 
                 This is the **Family-Wise Error Rate (FWER)**:
 
@@ -90,7 +103,7 @@ def interactive_theory(mo):
                 **Your Challenge:** Use the Control Panel below to crank up the dimensions and force our "dead fish" AI to hallucinate a profound insight.
                 """
             )
-        } 
+        }
     )
     return (theory_accordion,)
 
