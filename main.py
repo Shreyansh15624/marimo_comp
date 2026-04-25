@@ -19,18 +19,80 @@ def imports():
     return go, mo, np, stats
 
 
+@app.cell(hide_code=True)
+def layout(chart, control_panel, header, mo, theory_accordion, ui_card):
+    # Notice `theory_accordion` added to the left column stack
+    # 1. Build the Left Theory Board
+    left_column = mo.vstack(
+        [
+            header,
+            theory_accordion,
+            ui_card
+        ],
+        gap=0,
+    )
+
+
+    # 2. Building the Right Command Center 
+    right_column = mo.vstack(
+        [chart, control_panel],
+        gap=1.5,
+    )
+
+    # 3. Spread it across the screen horizontally
+    # widths=[1, 1.2] gives the 3D chart slightly more breathing room on the right
+    dashboard = mo.hstack(
+        [left_column, right_column],
+        widths=[1.5, 1],
+        gap=2,
+        align="start"
+    )
+    dashboard
+    return
+
+
 @app.cell
 def header(mo):
-    mo.md("""
-    # **The Dead Salmons of AI Interpretability**
+    header = mo.md("""# **The Dead Salmons of AI Interpretability**
+    > **Your Challenge, Judge:** Tweak the parameters below to force our untrained, "dead fish" AI to show statistically significant intelligence.""")
+    return (header,)
 
-    In 2009, researcher Craig Bennett placed a dead Atlantic salmon in an fMRI machine and showed it pictures of humans in social situations. When analyzing the data *without correcting for multiple comparisons*, the fMRI detected "brain activity" in the dead fish.
 
-    If your math lacks sanity checks, it will hallucinate intelligence out of pure noise.
+@app.cell
+def interactive_theory(mo):
+    theory_accordion = mo.accordion(
+        {
+            "🐟 Phase 1: The Dead Salmon Illusion": mo.md(
+                """
+                In 2009, researcher Craig Bennett placed a dead Atlantic salmon in an fMRI machine and showed it pictures of humans in social situations. When analyzing the data *without correcting for multiple comparisons*, the fMRI detected "brain activity" in the dead fish. 
 
-    > **Your Challenge, Judge:** Tweak the parameters below to force our untrained, "dead fish" AI to show statistically significant intelligence.
-    """)
-    return
+                The takeaway? If your math lacks sanity checks, it will confidently hallucinate intelligence out of pure noise.
+                """
+            ),
+            "🎲 Phase 2: The Math (Why It Breaks)": mo.md(
+                """
+                In AI interpretability, we look at thousands of features. When you test multiple features simultaneously against a random target, the probability of finding a false positive by pure random chance stacks exponentially. 
+
+                This is the **Family-Wise Error Rate (FWER)**:
+
+                $$FWER = 1 - (1 - \\alpha)^m$$
+
+                * **$\\alpha$ (alpha)** = Your Significance Threshold
+                * **$m$** = Your Feature Count (Dimensions)
+
+                If you increase the features ($m$) high enough, finding a false positive is no longer a risk—it is a mathematical certainty.
+                """
+            ),
+            "🧠 Phase 3: The alphaXiv Thesis": mo.md(
+                """
+                The featured alphaXiv paper warns of this exact statistical trap applied to modern AI: **Interpretability tools applied to untrained or highly noisy networks can still produce highly convincing, human-readable explanations.**
+
+                **Your Challenge:** Use the Control Panel below to crank up the dimensions and force our "dead fish" AI to hallucinate a profound insight.
+                """
+            )
+        } 
+    )
+    return (theory_accordion,)
 
 
 @app.cell
@@ -69,25 +131,15 @@ def engine(feature_count, np, p_thresh, sample_size, stats):
     X = np.random.randn(N, m)
 
     # 2. Hunting down the Fluke!
-    correlations = []
     p_values = []
 
     for i in range(m):
-        r, p = stats.pearsonr(X[:, i], Y)
-        correlations.append(abs(r))
+        _, p = stats.pearsonr(X[:, i], Y)
         p_values.append(p)
 
     # 3. Singling out the best of False Positives
     best_idx = np.argmin(p_values if p_values else [0])
     best_p_val = p_values[best_idx]
-
-    # Identifying the top 10 features to making a good dashboard
-    top_10_indices = np.argsort(p_values)[:10]
-    top_10_p_vals = [p_values[i] for i in top_10_indices]
-
-    # Normalizing the correlations for the chart display (0-1)
-    max_corr = max(correlations)
-    important_scores = [correlations[i]/max_corr for i in top_10_indices]
 
     # Checking if the trap is sprung
     trap_sprung = best_p_val < alpha
@@ -116,7 +168,7 @@ def visualization(alpha, go, m, method, mo, np, p_values):
 
     # 2. Color & Size Logic
     marker_sizes = [24 if p < alpha else 12 for p in p_values]
-    marker_colors = ['rgba(255, 105, 38, 1)' if p < alpha else 'rgba(166, 68, 68, 0.2)' for p in p_values]
+    marker_colors = ['rgba(224, 63, 63, 1.0)' if p < alpha else 'rgba(215, 217, 106, 0.2)' for p in p_values]
 
     # 3. Building the WebGL Scatter Plot
     fig = go.Figure(data=[go.Scatter3d(
@@ -150,62 +202,52 @@ def visualization(alpha, go, m, method, mo, np, p_values):
 
 
 @app.cell
-def layout(chart, control_panel, mo, ui_card):
-    # Using strict CSS Grid to force Plotly to respect the column boundaries
-    dashboard = mo.md(
-        f"""
-        <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 2rem; align-items: stretch; max-width: 100%;">
-            <div style="display: flex; flex-direction: column; gap: 1.5rem; min-width: 0;">
-                {chart}
-                {control_panel}
-            </div>
-            <div style="min-width: 0; height: 100%;">
-                <div style="height: 100%;">
-                    {ui_card}
-                </div>
-            </div>
-        </div>
-        """
-    )
-    dashboard
-    return
-
-
-@app.cell
 def post_mortem(best_p_val, mo, trap_sprung):
     if not trap_sprung:
         content = f"""
-        ### 🔬 The Experiment is Ongoing!
-        The neural matrix is currently stable, so adjust the features and significance thresholds in the control panel to see if you can force the interpretability tools to hallucinate a false positive.
+    ### 🔬 The Experiment is Ongoing!
 
-        **Current Lowest p-value:** `{best_p_val:.4f}`
-        """
-        border_color = "#00FFFF" # Calm Cyan, isn't too harsh on the eyes
+    The neural matrix is currently stable. Adjust the features and significance thresholds in the control panel to see if you can force the interpretability tools to hallucinate a false positive.
+
+    **Current Lowest p-value:** `{best_p_val:.4f}`
+    """
+        border_color = "#00FFFF" # Calm Cyan
     else:
-        content=f"""
-        ### 🚨 TRAP SPRUNG: The alphaXiv Connection
+        content = f"""
+        ### 🚨 TRAP SPRUNG: The Illusion of Identifiability
         **Lowest p-value achieved: `{best_p_val:.4f}`**
 
-        You just successfully replicated the **Dead Salmon Effect** inside an AI model.
+        You just successfully replicated the **Dead Salmon Effect** inside an AI model, proving the core danger of non-identifiable interpretability queries.
 
-        **The Illusion:** Just like the infamous 2009 fMRI experiment detected "social awareness" in a dead Atlantic salmon, you just forced a standard interpretability tool to find a highly significant, critical feature inside pure, unadulterated noise. 
+        **The Statistical Failure:** Just like the 2009 fMRI experiment, you forced an interpretability tool to find a highly significant feature inside pure, unadulterated noise. Because we did not correct for the Family-Wise Error Rate ($FWER = 1 - (1 - \\alpha)^m$), the math was guaranteed to fail.
 
-        **The Mechanics:** By increasing the feature dimensions, you exponentially drove up the Family-Wise Error Rate. The model didn't find intelligence; it just rolled the mathematical dice enough times to guarantee a statistical fluke, and then painted it bright orange.
+        **Non-Identifiability & Overdetermination:** The featured alphaXiv paper warns that AI interpretability suffers from fundamental *non-identifiability*. When an AI system is complex and overdetermined, multiple completely distinct explanatory "stories" can fit the data equally well. By cranking up the feature dimensions, you expanded the hypothesis space until the engine inevitably found a spurious correlation that fit perfectly.
 
-        **The Real-World Stakes:** This is the core thesis of the alphaXiv research paper. When we scale architectures to billions of parameters, this Multiple Comparisons Problem scales exponentially with it. If our mathematical sanity checks fail, our interpretability tools won't fail quietly—they will confidently lie to us, projecting profound, human-readable meaning onto a completely dead matrix.
+        **The Surrogate Model Warning:** We must treat explanations as *surrogate models*—statistical estimators inferred from computational traces. If our queries lack strict mathematical sanity checks, these surrogates won't fail quietly; they will confidently hallucinate profound, human-readable meaning onto a completely dead matrix.
         """
-        border_color = "#FF6926" # Burnt orange to match the hallucinated node
+        border_color = "#FF6926" # Burnt Orange
 
-    # Wrapping it in a sleek, semi-transparent card with a dynamic left border
+    # Wrap it back in the beautifully styled UI card
     ui_card = mo.md(content).style(
         padding="1.5rem",
         border_radius="8px",
         background_color="rgba(255, 255, 255, 0.03)",
         border_left=f"4px solid {border_color}",
-        margin_top="2rem",
+        margin_top="1rem",
     )
-
     return (ui_card,)
+
+
+@app.cell(hide_code=True)
+def references(mo):
+    mo.md(r"""
+    ---
+
+    **References**
+
+    1. M. Méloux, G. Dirupo, F. Portet, M. Peyrard, [*The Dead Salmons of AI Interpretability*](https://arxiv.org/abs/2512.18792). arXiv:2512.18792 [cs.AI] (2025).
+    """)
+    return
 
 
 if __name__ == "__main__":
