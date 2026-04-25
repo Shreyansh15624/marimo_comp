@@ -30,7 +30,6 @@ def imports():
 
 @app.cell(hide_code=True)
 def layout(chart, control_panel, header, mo, theory_accordion, ui_card):
-    # Notice `theory_accordion` added to the left column stack
     # 1. Build the Left Theory Board
     left_column = mo.vstack(
         [
@@ -41,7 +40,6 @@ def layout(chart, control_panel, header, mo, theory_accordion, ui_card):
         gap=0,
     )
 
-
     # 2. Building the Right Command Center 
     right_column = mo.vstack(
         [chart, control_panel],
@@ -49,7 +47,6 @@ def layout(chart, control_panel, header, mo, theory_accordion, ui_card):
     )
 
     # 3. Spread it across the screen horizontally
-    # widths=[1, 1.2] gives the 3D chart slightly more breathing room on the right
     dashboard = mo.hstack(
         [left_column, right_column],
         widths=[1.5, 1],
@@ -141,7 +138,6 @@ def engine(feature_count, np, p_thresh, sample_size, stats):
 
     # 2. Hunting down the Fluke!
     p_values = []
-
     for i in range(m):
         _, p = stats.pearsonr(X[:, i], Y)
         p_values.append(p)
@@ -202,7 +198,7 @@ def visualization(alpha, go, m, method, mo, np, p_values):
             xaxis=dict(showgrid=sg, zeroline=zl, showticklabels=False, title='', showbackground=False),
             yaxis=dict(showgrid=sg, zeroline=zl, showticklabels=False, title='', showbackground=False),
             zaxis=dict(showgrid=sg, zeroline=zl, showticklabels=False, title='', showbackground=False),
-            bgcolor='rgba(40, 40, 40, 0.3)'
+            bgcolor='#121212'
         )
     )
 
